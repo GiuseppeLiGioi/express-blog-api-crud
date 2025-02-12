@@ -4,31 +4,23 @@ const express = require ("express");
 const router = express.Router();
 
 
-const arrPosts = require('../data/data'); 
+const arrPosts = require('../data/data.js'); 
+
+const controller = require('../controllers/controller')
 
   // Index 
-router.get('/', function(req, res) { 
-
-  });
+router.get('/', controller.index);
   
   // Show
-  router.get('/:id', function(req, res) { 
-   
-  });
+  router.get('/:id', controller.show);
   
   // Store 
-  router.post('/', function(req, res) { 
-  
-  });
+  router.post('/', controller.store);
   
   // Update 
-  router.put('/:id', function(req, res) { 
-    
-  });
+  router.put('/:id', controller.update);
   
   // Destroy 
-  router.patch('/:id', function(req, res) { 
-    
-  });
+  router.patch('/:id', controller.destroy);
   
   module.exports = router;
