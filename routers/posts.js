@@ -21,6 +21,6 @@ router.get('/', controller.index);
   router.put('/:id', controller.update);
   
   // Destroy 
-  router.patch('/:id', controller.destroy);
+  router.delete('/:id', controller.destroy);
   
   module.exports = router;

@@ -29,25 +29,30 @@ function update(req, res) {
     res.send('Modifica integrale del post ' + req.params.id); 
 }
 function destroy(req, res) {
-    const id = parseInt(req.params.id)
-    // cerchiamo il pizza tramite id
+    console.log("DELETE request ricevuta per il post con ID:", req.params.id); // Aggiungi questa riga per il log
+
+    const id = parseInt(req.params.id);
     const post = arrPosts.find(post => post.id === id);
-    // Piccolo controllo
+
     if (!post) {
-    res.status(404);
-    return res.json({
-    status: 404,
-    error: "Not Found",
-    message: "post non trovato"
-    })
+        return res.status(404).json({
+            status: 404,
+            error: "Not Found",
+            message: "Post non trovato"
+        });
     }
-    // Rimuoviamo la pizza dal menu
-    arrPosts.splice(arrPosts.indexOf(post), 1);
-    // Verifichiamo sul terminale
-    console.log(arrPosts);
-    // Restituiamo lo status corretto
-    res.sendStatus(204)
-    };
+
+    const postIndex = arrPosts.indexOf(post);
+
+    if (postIndex !== -1) {
+        arrPosts.splice(postIndex, 1);
+    }
+
+    console.log(arrPosts);  // Log dell'array dopo la rimozione
+
+    res.sendStatus(204);  // Restituiamo il codice di stato 204
+}
+
 
 // esportiamo tutto
 module.exports = { index, show, store, update, destroy }
