@@ -43,6 +43,8 @@ function destroy(req, res) {
     }
     // Rimuoviamo la pizza dal menu
     arrPosts.splice(arrPosts.indexOf(post), 1);
+    // Verifichiamo sul terminale
+    console.log(arrPosts);
     // Restituiamo lo status corretto
     res.sendStatus(204)
     };
