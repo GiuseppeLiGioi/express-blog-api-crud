@@ -23,8 +23,9 @@ function show(req, res) {
 };
 
 function store(req, res) {
-    res.send('Creazione nuovo post'); 
-}
+    console.log(req.body);
+    res.send('Creazione nuova pizza');
+    }
 function update(req, res) {
     res.send('Modifica integrale del post ' + req.params.id); 
 }
