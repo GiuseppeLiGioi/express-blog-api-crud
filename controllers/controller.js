@@ -62,13 +62,12 @@ function store(req, res) {
 function update(req, res) {
     //recuperiamo l'id dall'URL e trasformiamolo in numero con il paresInt
     const id = parseInt(req.params.id);
-    console.log("ID ricevuto:", id);
     
 
     //cerchiamo il post tramite id
     const post = arrPosts.find(post => post.id === id);
 
-    //facciamo un piccolo controllo 
+    //facciamo un piccolo controllo, bonus part 
     if (!post){
         res.status(404);
 
