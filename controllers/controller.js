@@ -23,8 +23,29 @@ function show(req, res) {
 };
 
 function store(req, res) {
-    console.log(req.body);
-    res.send('Creazione nuovo post');
+    //creiamo un nuovo id incrementando l'ultimo id presente
+    const newId = arrPosts[arrPosts.length - 1].id + 1;
+
+    //creiamo il nuovo oggetto post
+    const newPost = {
+        id: newId,  
+      title: req.body.title,
+      slug: req.body.slug,
+      content: req.body.content,
+      image: req.body.image,
+      tags: req.body.tags
+    }
+
+    //aggiungiamo il nuovo post all'array dei posts
+    arrPosts.push(newPost);
+
+    //verifichiamo
+    console.log(arrPosts);
+
+    //restituiamo lo status corretto ed il post appena creato.
+    res.status(201);
+    res.json(newPost);
+
     }
 function update(req, res) {
     res.send('Modifica integrale del post ' + req.params.id); 
