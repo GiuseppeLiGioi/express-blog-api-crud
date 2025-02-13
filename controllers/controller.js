@@ -24,7 +24,7 @@ function show(req, res) {
 
 function store(req, res) {
     console.log(req.body);
-    res.send('Creazione nuova pizza');
+    res.send('Creazione nuovo post');
     }
 function update(req, res) {
     res.send('Modifica integrale del post ' + req.params.id); 
