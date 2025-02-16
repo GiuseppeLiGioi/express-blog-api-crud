@@ -3,7 +3,7 @@ const app= express();
 const port = 3000;
 const postsRouter = require ('./routers/posts')
 
-const checkTime = require("./middlewares/checkTime"); // Importa il middleware
+const {checkTime, notFound} = require("./middlewares/checkTime"); // Importa il middleware
 
 //per mettere le immagini, faccio riferiemnto alla cartella public
 app.use(express.static ('public'));
@@ -38,6 +38,8 @@ app.use("/api/posts", postsRouter)
 
 
 app.use(checkTime);
+
+app.use(notFound);
 
 //connessione alla porta 3000 del server
 app.listen(port, ()=>{
